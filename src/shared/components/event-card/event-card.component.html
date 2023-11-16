@@ -1,0 +1,23 @@
+<mat-card class="btn navs d-flex flex-column align-items-start p-3">
+    <div class="d-flex gap-2">
+        <span class="fs-3 text-primary text-capitalize">{{event.title}}</span>
+    </div>
+    <div>
+        <span class="fw-semibold">Created By: </span>
+        <span>{{event.creator.username}}</span>
+    </div>
+    <div class="d-flex gap-3">
+        <div>
+            <span class="fw-semibold">From: </span>
+            <span>{{event.startDate}}</span>
+        </div>
+        <div>
+            <span class="fw-semibold">To: </span>
+            <span>{{event.endDate}}</span>
+        </div>
+    </div>
+    <div>
+        <span class="fw-semibold">Participants: </span>
+        <span>{{participants}}</span>
+    </div>
+</mat-card>

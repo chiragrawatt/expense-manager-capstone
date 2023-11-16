@@ -1,0 +1,15 @@
+<section>
+    <div class="d-flex flex-column align-items-center my-3">
+        <div class="d-flex photo-bg rounded rounded-pill justify-content-center align-items-center">
+            <span class="fs-2">{{profile}}</span>
+        </div>
+        <span class="fw-semibold">{{user?.username}}</span>
+        <span class="team-subtitle text-body-emphasis">{{user?.team?.name}}</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="d-flex align-items-center ps-3 pe-5 py-2 rounded-0 btn navs" *ngFor="let data of navData" [routerLink]="data.path" routerLinkActive="nav-active">
+        <i class="{{data.icon}}"></i>
+        <span class="ms-2">{{data.title}}</span>
+        <mat-divider></mat-divider>
+    </div>
+</section>

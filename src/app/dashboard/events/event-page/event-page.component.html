@@ -1,0 +1,47 @@
+<section class="p-2">
+    <mat-card class="p-5">
+        <h1 class="fw-normal text-capitalize">{{event?.title}}</h1>
+        <mat-divider></mat-divider>
+        <div>
+            <span class="fw-semibold">Created By: </span>
+            <div class="navs d-flex btn gap-2">
+                <div class="d-flex bg-secondary rounded rounded-pill photo-bg justify-content-center align-items-center">
+                    <span class="text-primary">{{getInitials(event?.creator?.username)}}</span>
+                </div>
+                <span>{{event?.creator?.username}}</span>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="d-flex gap-3">
+            <div>
+                <span class="fw-semibold">From: </span>
+                <span>{{event?.startDate}}</span>
+            </div>
+            <div>
+                <span class="fw-semibold">To: </span>
+                <span>{{event?.endDate}}</span>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div>
+            <span class="fw-semibold">Budget: </span>
+            <span>₹{{event?.budget}}</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div>
+            <span class="fw-semibold">Participants: </span>
+            <div class="navs d-flex btn gap-2 user-holder" *ngFor="let user of event?.participants">
+                <div class="d-flex navs bg-secondary rounded rounded-pill photo-bg justify-content-center align-items-center">
+                    <span class="text-primary">{{getInitials(user.username)}}</span>
+                </div>
+                <span>{{user.username}}</span>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div>
+            <span class="fw-semibold">Your expenses: </span>
+            <span>₹{{event?.budget}}</span>
+        </div>
+        <mat-divider></mat-divider>
+    </mat-card>
+</section>

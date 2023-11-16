@@ -1,0 +1,60 @@
+<section>
+    <mat-card class="d-flex justify-content-center p-5">
+        <h2>Create New Event</h2>
+        <div>
+            <form [formGroup]="eventForm" (submit)="onSubmit()" class="d-flex flex-column align-items-start w-50">
+                <label>Title</label>
+                <input formControlName="title" class="form-control" type="text"/>
+                <label>Budget</label>
+                <input formControlName="budget" type="number" class="form-control">
+                <label>Start Date</label>
+                <input formControlName="startDate" class="form-control" type="date"/>
+                <label>End Date</label>
+                <input formControlName="endDate" class="form-control" type="date"/>
+                <label>Description</label>
+                <textarea formControlName="description" class="form-control" type="date"></textarea>
+                <label>Participants</label>
+                <mat-expansion-panel class="w-100 shadow-none form-control">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Search
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        <input [formControl]="searchQuery" type="text" #searchInput class="form-control"/>
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    
+                    <div class="scrollable">
+                        <div class="mt-2" *ngIf="filteredUsers.length==0">
+                            <span class="text-primary">My Team</span>
+                            <div class="d-flex" *ngFor="let user of teamUsers">
+                                <input type="checkbox" [checked]="selectedParticipants.includes(user.id)" (click)="toggleSelectedUser(user.id)" class="form-check"/>
+                                <span class="ms-2 align-self-center">{{user.username}}</span>
+                            </div>
+                        </div>
+                        <div class="mt-2" *ngIf="filteredUsers.length==0 && otherUsers.length>0">
+                            <span class="text-primary">Others</span>
+                            <div class="d-flex" *ngFor="let user of otherUsers">
+                                <input type="checkbox" [checked]="selectedParticipants.includes(user.id)" (click)="toggleSelectedUser(user.id)" class="form-check"/>
+                                <span class="ms-2 align-self-center">{{user.username}}</span>
+                            </div>
+                        </div>
+                        <div *ngIf="filteredUsers.length>0">
+                            <span class="text-primary">Search Results</span>
+                            <div class="d-flex" *ngFor="let user of filteredUsers">
+                                <input type="checkbox" [checked]="selectedParticipants.includes(user.id)" (click)="toggleSelectedUser(user.id)" class="form-check"/>
+                                <span class="ms-2 align-self-center">{{user.username}}</span>
+                            </div>
+                        </div>
+                        <div *ngIf="filteredUsers.length==0 && searchInput.value.length>0">
+    
+                        </div>
+                    </div>
+                
+                </mat-expansion-panel>
+                <button class="btn btn-primary fw-bold w-100" [disabled]="(!eventForm.valid || selectedParticipants.length==0)">ADD</button>
+            </form>
+            <!-- <button (click)="showForm()">Show form</button> -->
+        </div>
+    </mat-card>
+</section>

@@ -1,0 +1,5 @@
+<section class="p-3 d-flex flex-column gap-2">
+    <a  *ngFor="let event of events" class="nav-link" routerLink="/dashboard/events/view/{{event.id}}">
+        <app-event-card [event]="event"></app-event-card>
+    </a>
+</section>

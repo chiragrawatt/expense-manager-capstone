@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span class="">Expense Manager</span>
+    <div class="ms-auto d-flex">
+        <button mat-icon-button>
+            <mat-icon> message</mat-icon>
+
+        </button>
+        <button mat-icon-button>
+            <mat-icon matBadge="7" matBadgeColor="accent">notifications_none</mat-icon>
+        </button>
+        <button mat-icon-button (click)="signOut()">
+            <mat-icon>power_settings_new</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" #sidenav opened position="start">
+        <app-sidebar></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

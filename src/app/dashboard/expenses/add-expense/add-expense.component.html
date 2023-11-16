@@ -1,0 +1,33 @@
+<section>
+    <mat-card class="d-flex justify-content-center p-5">
+        <span class="fs-2 fw-semibold">Add Expense</span>
+        <div>
+          <form class="d-flex flex-column align-items-start w-50" [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+            <label for="amount">Amount:</label>
+            <input class="form-control" type="number" id="amount" name="amount" formControlName="amount">
+          
+            <label for="category">Category:</label>
+            <select id="category" class="form-select" name="category" formControlName="category">
+              <option *ngFor="let category of categories" [ngValue]="category">{{category.category}}</option>
+            </select>
+          
+            <label for="date">Date:</label>
+            <input class="form-control" type="date" id="date" name="date" formControlName="date">
+          
+            <label>Receipt:</label>
+            <input type="file" class="form-control" id="inputGroupFile03" (change)="uploadImage($event)" aria-describedby="inputGroupFileAddon03" aria-label="Upload" formControlName="receipt">
+          
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" name="description" formControlName="description"></textarea>
+          
+            <label for="event">Event:</label>
+            <select id="event" class="form-select" name="event" formControlName="event">
+              <option *ngFor="let event of events" [ngValue]="event">{{event.title}}</option>
+            </select>
+          
+            <button [disabled]="!expenseForm.valid" class="btn btn-primary w-100 p-2" type="submit">Submit</button>
+          </form>
+            <button (click)="showForm()">Show form</button>
+        </div>
+    </mat-card>
+</section>

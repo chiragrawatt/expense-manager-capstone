@@ -1,0 +1,23 @@
+<section class="d-flex flex-column align-items-center justify-content-center ">
+
+    <span class="fs-3">Welcome to Expense Manager</span>
+    <span class="text-body-secondary mt-1">Please sign in to continue</span>
+
+    <app-loader class="mt-3 p-4" *ngIf="isLoading"></app-loader>
+
+    <mat-card class="mt-3 p-4" *ngIf="!isLoading">
+        <form [formGroup]="userForm" (submit)="onSubmit()" class="d-flex flex-column">
+            <label>Email</label>
+            <input formControlName="email" class="mt-2 form-control " type="text" placeholder="Enter you email"/> 
+            <mat-error>Invalid Email</mat-error>
+
+            <label class="mt-3">Password</label>
+            <input formControlName="password" class="mt-2 form-control" type="password" placeholder="Enter you password"/> 
+            <mat-error>Password must be atleast 8 characters</mat-error>
+
+            <button [disabled]="!userForm.valid" class="btn btn-primary mt-5 p-2">Sign In</button>
+        </form>
+    </mat-card>
+
+    <span class="text-body-secondary mt-2">Trouble logging in? Contact your admin if this is a mistake</span>
+</section>

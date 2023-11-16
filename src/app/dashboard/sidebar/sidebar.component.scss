@@ -1,0 +1,32 @@
+
+span {
+    font-size: 1.1rem;
+    
+}
+
+.nav-active{
+    // background-color: #e6e6e6;
+    background-color: #DEE1F0 !important;
+    font-weight: 500 !important;
+    color: #3c4caa !important;
+    border-left: solid 3px #3C4CAA;
+}
+
+.photo-bg {
+    background-color: #c6cceb;
+    color: #5566c3;
+    height: 90px;
+    width: 90px;
+}
+
+.team-subtitle {
+    font-size: 0.9rem;
+}
+
+.navs {
+    color: #565A5E;
+
+    &:hover {
+        background: #f2f2f2;
+    }
+}

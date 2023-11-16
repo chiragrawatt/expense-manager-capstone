@@ -1,0 +1,25 @@
+h2 {
+    border-left: 7px solid #3C4CAA;
+    padding-left: 1rem;
+}
+
+.approved {
+    background-color: #DCF1E3;
+    color: #81C38B;
+    padding: 0.5rem;
+    border-radius: 100px;
+}
+
+.pending {
+    background-color:  #f2f2f2;
+    color: #d9d9d9;
+    padding: 0.5rem;
+    border-radius: 100px;
+}
+
+.rejected {
+    background-color:  #ffebe6;
+    color:  #ff704d;
+    padding: 0.5rem;
+    border-radius: 100px;
+}
