@@ -11,7 +11,8 @@ import { isLoggedIn } from 'src/shared/auth.gaurd';
 import { EventPageComponent } from './dashboard/events/event-page/event-page.component';
 import { AddExpenseComponent } from './dashboard/expenses/add-expense/add-expense.component';
 import { ViewExpenseComponent } from './dashboard/expenses/view-expense/view-expense.component';
-import { ExpenseRequestsComponent } from './expense-requests/expense-requests.component';
+import { ExpenseRequestsComponent } from './dashboard/expenses/expense-requests/expense-requests.component';
+import { PendingExpensesComponent } from './dashboard/expenses/pending-expenses/pending-expenses.component';
 
 const routes: Routes = [
   {path: "signin", component: SigninComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
       {path: "view", component: ViewExpenseComponent},
       {path: "add", component: AddExpenseComponent},
       {path: "requests", component: ExpenseRequestsComponent},
+      {path: "pending", component: PendingExpensesComponent},
       {path: "", redirectTo: "view", pathMatch: "full"}
     ]},
     {path: "team", component: TeamComponent},

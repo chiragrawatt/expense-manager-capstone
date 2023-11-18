@@ -29,7 +29,8 @@ export class AddExpenseComponent implements OnInit {
     formData.receipt = this.imgSrc;
     formData.status = EExpenseStatus.PENDING;
 
-    console.log(formData);
+    console.log("img", this.imgSrc);
+    console.log("rec", formData.receipt);
 
     this.expenseService.addExpense(formData).subscribe({
       next: res => {
@@ -96,6 +97,6 @@ export class AddExpenseComponent implements OnInit {
   uploadImage = async (event: any) => {
     const file = event.target.files[0];
     const base64 = await this.convertBase64(file);
-    console.log(base64);
+    this.imgSrc = base64;
   };
 }

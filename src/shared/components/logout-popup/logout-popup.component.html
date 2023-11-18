@@ -1,0 +1,8 @@
+<h2 mat-dialog-title class="text-danger ">End Session</h2>
+<mat-dialog-content class="mat-typography">
+    Are you sure you want to end session?
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="btn btn-outline-dark" mat-dialog-close >Cancel</button>
+  <button class="btn btn-danger ms-2" [mat-dialog-close]="true" cdkFocusInitial color="warn">Log Out</button>
+</mat-dialog-actions>

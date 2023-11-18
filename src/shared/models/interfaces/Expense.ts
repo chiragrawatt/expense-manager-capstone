@@ -1,3 +1,4 @@
+import { IEvent } from "./Event";
 import { IExpenseCategory } from "./ExpenseCategory";
 import { EExpenseStatus } from "./ExpenseStatus";
 import { IUser } from "./User";
@@ -8,8 +9,8 @@ export interface IExpense {
     category: IExpenseCategory, 
     date: string, 
     receipt: string, 
-    desciption: string,
-    event:string, 
+    description: string,
+    event: IEvent, 
     status: EExpenseStatus,
     creator: IUser,
     rejectionMessage: string

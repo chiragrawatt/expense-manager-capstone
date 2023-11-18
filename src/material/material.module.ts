@@ -14,10 +14,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatBadgeModule} from '@angular/material/badge';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 const material = [
@@ -33,12 +34,10 @@ const material = [
   MatToolbarModule,
   MatIconModule,
   MatTableModule,
-  MatDatepickerModule,
-  MatRadioModule,
-  MatNativeDateModule,
   MatAutocompleteModule,
   MatBadgeModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatDialogModule
 ];
 
 

@@ -3,21 +3,24 @@ import { IExpense } from '../models/interfaces/Expense';
 import { API_URL } from '../constants/api.constants';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { EExpenseStatus } from '../models/interfaces/ExpenseStatus';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExpenseService {
   expense : BehaviorSubject<IExpense | null> = new BehaviorSubject<IExpense | null>(null);
-  expenses : BehaviorSubject<IExpense[]> = new BehaviorSubject<IExpense[]>([]);
+  createdExpenses : BehaviorSubject<IExpense[]> = new BehaviorSubject<IExpense[]>([]);
+  pendingExpenses : BehaviorSubject<IExpense[]> = new BehaviorSubject<IExpense[]>([]);
 
   constructor(private http: HttpClient) { }
 
   getCreatedExpenses() : void {
-    this.expenses.next([]);
+    this.createdExpenses.next([]);
     this.http.get<IExpense[]>(`${API_URL}/expense`).subscribe({
       next: res => {
-        this.expenses.next(res);
+        this.createdExpenses.next(res);
+        console.log(res);
       },
       error: err => {
         console.log(err);
@@ -25,18 +28,21 @@ export class ExpenseService {
     })
   }
 
-  // getParticipatedexpenses() : void {
-  //   this.http.get<IExpense[]>(`${API_URL}/expense/employee`).subscribe({
-  //     next: res => {
-  //       this.expenses.next(res);
-  //     },
-  //     error: err => {
-  //       this.expenses.error(err);
-  //     }
-  //   })
-  // }
+  getExpensesForManagerWithStatus(status : EExpenseStatus) : void {
+    this.pendingExpenses.next([]);
+    this.http.get<IExpense[]>(`${API_URL}/expense/manager/${EExpenseStatus[status]}`).subscribe({
+      next: res => {
+        this.pendingExpenses.next(res);
+        console.log(res);
+      },
+      error: err => {
+        console.log(err);
+      }
+    })
+  }
 
   getExpenseById(expenseId: string) : void {
+    this.expense.next(null);
     this.http.get<IExpense>(`${API_URL}/expense/${expenseId}`).subscribe({
       next: res => {
         this.expense.next(res);
@@ -45,6 +51,10 @@ export class ExpenseService {
         this.expense.error(err);
       }
     })
+  }
+
+  chageExpenseStatus(expenseId: string, status : EExpenseStatus) : Observable<IExpense> {
+    return this.http.put<IExpense>(`${API_URL}/expense/status/${expenseId}`, status);
   }
 
   addExpense(expense: IExpense) : Observable<IExpense> {

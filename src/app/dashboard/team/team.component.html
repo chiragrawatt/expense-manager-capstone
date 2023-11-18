@@ -1,1 +1,26 @@
-<p>team works!</p>
+<section class="p-2">
+    <mat-card class="p-5">
+        <h1 class="fw-normal text-capitalize">{{team?.name}}</h1>
+        <mat-divider></mat-divider>
+        <div>
+            <span class="fw-semibold">Manager(s): </span>
+            <div class="navs d-flex btn gap-2 user-holder" *ngFor="let user of managers">
+                <div class="d-flex navs bg-secondary rounded rounded-pill photo-bg justify-content-center align-items-center">
+                    <span class="text-primary">{{getInitials(user.username)}}</span>
+                </div>
+                <span>{{user.username}}</span>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div>
+            <span class="fw-semibold">Member(s): </span>
+            <div class="navs d-flex btn gap-2 user-holder" *ngFor="let user of members">
+                <div class="d-flex navs bg-secondary rounded rounded-pill photo-bg justify-content-center align-items-center">
+                    <span class="text-primary">{{getInitials(user.username)}}</span>
+                </div>
+                <span>{{user.username}}</span>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+    </mat-card>
+</section>

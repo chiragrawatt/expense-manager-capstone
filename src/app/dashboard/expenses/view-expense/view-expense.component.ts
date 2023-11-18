@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { EXPENSE_DISPLAYED_COLUMNS } from 'src/shared/constants/app.constants';
 import { IExpense } from 'src/shared/models/interfaces/Expense';
 import { EExpenseStatus } from 'src/shared/models/interfaces/ExpenseStatus';
@@ -13,14 +14,17 @@ export class ViewExpenseComponent implements OnInit {
   expenseData : IExpense[] = [];
   displayedColumns : string[] = EXPENSE_DISPLAYED_COLUMNS;
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   constructor(private expenseService: ExpenseService) {
     
   }
 
   ngOnInit(): void {
-    this.expenseService.expenses.subscribe({
+    this.expenseService.createdExpenses.subscribe({
       next: res => {
         this.expenseData = res;
+        this.paginator.length = res.length;
         console.log(res);
       },
       error: err => {

@@ -1,1 +1,1 @@
-export const EXPENSE_DISPLAYED_COLUMNS = ['description', 'amount', 'category', 'date', 'event', 'status']
+export const EXPENSE_DISPLAYED_COLUMNS = ['description', 'amount', 'category', 'date', 'event', 'status', 'actions']

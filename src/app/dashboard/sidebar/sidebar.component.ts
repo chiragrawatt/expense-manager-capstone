@@ -40,6 +40,11 @@ export class SidebarComponent implements OnInit {
       icon: "bi bi-receipt"
     },
     {
+      title: "Pending Expenses",
+      path: "expenses/pending",
+      icon: "bi bi-card-checklist"
+    },
+    {
       title: "Team",
       path: "team",
       icon: "bi bi-people-fill"

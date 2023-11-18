@@ -5,13 +5,17 @@ import { MaterialModule } from 'src/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './components/loader/loader.component';
 import { EventCardComponent } from './components/event-card/event-card.component';
+import { ReceiptPopupComponent } from './components/receipt-popup/receipt-popup.component';
+import { LogoutPopupComponent } from './components/logout-popup/logout-popup.component';
 
 
 
 @NgModule({
   declarations: [
     LoaderComponent,
-    EventCardComponent
+    EventCardComponent,
+    ReceiptPopupComponent,
+    LogoutPopupComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +24,9 @@ import { EventCardComponent } from './components/event-card/event-card.component
   ],
   exports: [
     LoaderComponent,
-    EventCardComponent
+    EventCardComponent,
+    ReceiptPopupComponent,
+    LogoutPopupComponent
   ]
 })
 export class SharedModule { }

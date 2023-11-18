@@ -1,0 +1,31 @@
+h1 {
+    border-left: 7px solid #3C4CAA;
+    padding-left: 1rem;
+}
+
+span {
+    font-size: 1.5;
+}
+
+mat-divider {
+    margin: 10px 0px 10px 0px
+}
+
+.photo-bg {
+    border-radius: 100px;
+    height: 30px;
+    width: 30px;
+}
+
+.user-holder {
+    max-height: 300px;
+    overflow-x: auto;
+}
+
+.navs {
+    color: #565A5E;
+
+    &:hover {
+        background: #f2f2f2;
+    }
+}

@@ -15,7 +15,7 @@
             <input class="form-control" type="date" id="date" name="date" formControlName="date">
           
             <label>Receipt:</label>
-            <input type="file" class="form-control" id="inputGroupFile03" (change)="uploadImage($event)" aria-describedby="inputGroupFileAddon03" aria-label="Upload" formControlName="receipt">
+            <input type="file" accept="image/*" class="form-control" id="inputGroupFile03" (change)="uploadImage($event)" aria-describedby="inputGroupFileAddon03" aria-label="Upload" formControlName="receipt">
           
             <label for="description">Description:</label>
             <textarea class="form-control" id="description" name="description" formControlName="description"></textarea>

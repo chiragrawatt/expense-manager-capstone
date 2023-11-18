@@ -22,9 +22,9 @@ import { ViewEventComponent } from './dashboard/events/view-event/view-event.com
 import { EventPageComponent } from './dashboard/events/event-page/event-page.component';
 import { AddExpenseComponent } from './dashboard/expenses/add-expense/add-expense.component';
 import { ViewExpenseComponent } from './dashboard/expenses/view-expense/view-expense.component';
-import { PendingExpensesComponent } from './pending-expenses/pending-expenses.component';
-import { ExpensePageComponent } from './expense-page/expense-page.component';
-import { ExpenseRequestsComponent } from './expense-requests/expense-requests.component';
+import { PendingExpensesComponent } from './dashboard/expenses/pending-expenses/pending-expenses.component';
+import { ExpensePageComponent } from './dashboard/expenses/expense-page/expense-page.component';
+import { ExpenseRequestsComponent } from './dashboard/expenses/expense-requests/expense-requests.component';
 
 @NgModule({
   declarations: [

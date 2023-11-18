@@ -3,23 +3,31 @@ h2 {
     padding-left: 1rem;
 }
 
+.approved, .pending, .rejected {
+    display: flex;
+    flex-wrap: none;
+    gap: 2px;
+    padding: 0.2rem 0.4rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.chip-icon {
+    font-size: 0.5rem;
+}
+
 .approved {
     background-color: #DCF1E3;
     color: #81C38B;
-    padding: 0.5rem;
-    border-radius: 100px;
 }
 
 .pending {
     background-color:  #f2f2f2;
     color: #d9d9d9;
-    padding: 0.5rem;
-    border-radius: 100px;
 }
 
 .rejected {
     background-color:  #ffebe6;
     color:  #ff704d;
-    padding: 0.5rem;
-    border-radius: 100px;
 }

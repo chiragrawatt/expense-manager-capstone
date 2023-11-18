@@ -4,7 +4,8 @@ export interface IEvent {
     id: string,
     title: string,
     description: string,
-    budget: number,
+    totalBudget: number,
+    remainingBudget: number,
     startDate: string,
     endDate: string,
     isActive: boolean

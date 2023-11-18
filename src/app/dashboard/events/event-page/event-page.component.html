@@ -25,7 +25,12 @@
         <mat-divider></mat-divider>
         <div>
             <span class="fw-semibold">Budget: </span>
-            <span>₹{{event?.budget}}</span>
+            <span>₹{{event?.totalBudget}}</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div>
+            <span class="fw-semibold">Remaining Budget: </span>
+            <span>₹{{event?.remainingBudget}}</span>
         </div>
         <mat-divider></mat-divider>
         <div>
@@ -36,11 +41,6 @@
                 </div>
                 <span>{{user.username}}</span>
             </div>
-        </div>
-        <mat-divider></mat-divider>
-        <div>
-            <span class="fw-semibold">Your expenses: </span>
-            <span>₹{{event?.budget}}</span>
         </div>
         <mat-divider></mat-divider>
     </mat-card>

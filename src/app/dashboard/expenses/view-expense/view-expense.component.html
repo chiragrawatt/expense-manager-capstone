@@ -1,44 +1,54 @@
 <section class="p-4">
   <div>
-      <h2>Expenses</h2>
-      <mat-table [dataSource]="expenseData" class="mt-4">
-        <ng-container matColumnDef="description">
-          <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-          <mat-cell *matCellDef="let expense"> {{ expense.description | slice:0:18 }}{{expense.description.length>18 ? "..." : ""}}</mat-cell>
-        </ng-container>
-  
-        <ng-container matColumnDef="amount">
-          <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
-          <mat-cell *matCellDef="let expense"> ₹{{ expense.amount }} </mat-cell>
-        </ng-container>
-    
-        <ng-container matColumnDef="category">
-          <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
-          <mat-cell *matCellDef="let expense"> {{ expense.category.category }} </mat-cell>
-        </ng-container>
-    
-        <ng-container matColumnDef="date">
-          <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
-          <mat-cell *matCellDef="let expense"> {{ expense.date }} </mat-cell>
-        </ng-container>
-    
-    
-        <ng-container matColumnDef="event">
-          <mat-header-cell *matHeaderCellDef> Event </mat-header-cell>
-          <mat-cell *matCellDef="let expense"> {{ expense.event.title }} </mat-cell>
-        </ng-container>
-    
-        <ng-container matColumnDef="status">
-          <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-          <mat-cell *matCellDef="let expense"> 
-          <span [ngClass]="{'pending': expense.status=='PENDING', 'approved': expense.status=='APPROVED', 'rejected': expense.status=='REJECTED'}">
-            <i class="bi bi-circle-fill"></i>
-            {{ expense.status }}
-        </span> </mat-cell>
-        </ng-container>
-    
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
-    </div>
+    <h2>Expenses</h2>
+    <mat-table [dataSource]="expenseData" class="mt-4">
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+        <mat-cell *matCellDef="let expense"> {{ expense.description | slice:0:18 }}{{expense.description.length>18 ?
+          "..." : ""}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+        <mat-cell *matCellDef="let expense"> ₹{{ expense.amount }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+        <mat-cell *matCellDef="let expense"> {{ expense.category.category }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+        <mat-cell *matCellDef="let expense"> {{ expense.date }} </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="event">
+        <mat-header-cell *matHeaderCellDef> Event </mat-header-cell>
+        <mat-cell *matCellDef="let expense"> {{ expense.event.title }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let expense">
+          <div
+            [ngClass]="{'pending': expense.status=='PENDING', 'approved': expense.status=='APPROVED', 'rejected': expense.status=='REJECTED'}">
+            <i class="bi bi-circle-fill chip-icon"></i>
+            <span>{{ expense.status }}</span>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
+        <mat-cell *matCellDef="let expense"> <button mat-icon-button><mat-icon color="warn">delete</mat-icon></button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons></mat-paginator>
+  </div>
 </section>
