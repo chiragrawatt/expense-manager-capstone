@@ -2,42 +2,52 @@
     <mat-card *ngFor="let expense of pendingExpenses" class="rounded-0">
         <div class="p-4">
             <div class="d-flex justify-content-between">
-                <span class="price-text">₹{{expense.amount}}</span>
                 <div class="property-holder">
-                    <span class="key">From</span>
-                    <span class="value"> {{ expense.creator.username }} </span>
+                    <span class="price-text" [class.text-danger] = "expense.amount > getRemainingBudget(expense)">₹{{expense.amount}}</span>
+                    <span class="desc-text">
+                        {{ expense.description }}
+                    </span>
                 </div>
                 <div class="property-holder">
-                    <span class="key">Event</span>
-                    <span class="value"> {{ expense.event.title }} </span>
+                    <div class="property-holder">
+                        <span class="key">From</span>
+                        <span class="value"> {{ expense.creator.username }} </span>
+                    </div>
+                    <div class="property-holder">
+                        <span class="key">Category</span>
+                        <span class="value"> {{ expense.category.category }} </span>
+                    </div>
                 </div>
                 <div class="property-holder">
-                    <span class="key">Category</span>
-                    <span class="value"> {{ expense.category.category }} </span>
+                    <div class="property-holder">
+                        <span class="key">Event</span>
+                        <span class="value"> {{ expense.event.title }} </span>
+                    </div>
+                    <div class="property-holder">
+                        <span class="key">Remaining Budget</span>
+                        <span class="value" [class.text-danger] = "expense.amount > getRemainingBudget(expense)"> ₹{{ getRemainingBudget(expense).toFixed(2) }} </span>
+                    </div>
                 </div>
                 <div class="property-holder">
-                    <span class="key">Date</span>
-                    <span class="value"> {{ expense.date }} </span>
-                </div>
-                <div class="property-holder">
-                    <span class="key">Category</span>
-                    <span class="value"> {{ expense.category.category }} </span>
+                    <div class="property-holder">
+                        <span class="key">Category</span>
+                        <span class="value"> {{ expense.category.category }} </span>
+                    </div>
+                    <div class="property-holder">
+                        <span class="key">Date</span>
+                        <span class="value"> {{ expense.date }} </span>
+                    </div>
                 </div>
                 <button mat-mini-fab color="primary" (click)="openDialog(expense.id)">
                     <i class="bi bi-receipt"></i>
                 </button>
             </div>
-            <mat-card-title>
-                <span class="desc-text">
-                    {{ expense.description }}
-                </span>
-            </mat-card-title>
             <div class="d-flex justify-content-end ">
-                <button class="btn text-success navs" (click)="approveExpense(expense.id)">
+                <button class="btn text-success navs" (click)="approveExpense(expense)">
                     <i class="bi bi-check"></i>
                     Approve
                 </button>
-                <button class="btn text-danger navs" (click)="rejectExpense(expense.id)">
+                <button class="btn text-danger navs" (click)="openRejectDialog(expense)">
                     <i class="bi bi-x"></i>
                     Reject
                 </button>

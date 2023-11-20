@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>Add a note</h1>
+<div mat-dialog-content>
+    <textarea #input class="form-control"></textarea>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-end">
+  <button class="btn navs text-danger" mat-button (click)="closeDialog(input.value)">Reject</button>
+</div>

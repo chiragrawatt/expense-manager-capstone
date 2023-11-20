@@ -1,0 +1,17 @@
+<div class="notif-container">
+    <div *ngFor="let notification of notifications" (click)=navigateToPage(notification.navLink) mat-dialog-close="">
+        <div class="notif-holder row"
+            [ngClass]="{'positive': notification.type.toString()=='POSITIVE', 'negative': notification.type.toString()=='NEGATIVE', 'neutral': notification.type.toString()=='NEUTRAL'}">
+            <div class="col-2 d-flex justify-content-center align-items-center bullet">
+                <div class="icon-holder">
+                    <i class="ntf-icon"
+                        [ngClass]="{'bi bi-check-lg': notification.type.toString()=='POSITIVE', 'bi bi-x-circle': notification.type.toString()=='NEGATIVE', 'bi bi-calendar-event-fill': notification.type.toString()=='NEUTRAL'}"></i>
+                </div>
+            </div>
+            <div class="text-holder col">
+                <span>{{notification.message}}</span>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+</div>

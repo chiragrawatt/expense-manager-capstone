@@ -14,12 +14,19 @@ export class EventPageComponent implements OnInit {
   event: IEvent | null = null;
   eventId: string | null = null;
 
+  totalRemainingBudget : number = 0;
+
   constructor(private route: ActivatedRoute, private eventService: EventService) { }
 
   ngOnInit(): void {
     this.eventService.event.subscribe({
       next: res => {
         this.event = res;
+        this.totalRemainingBudget = res?.totalBudget ?? 0;
+        res?.participants.forEach(pt => {
+          console.log(this.totalRemainingBudget);
+          this.totalRemainingBudget-=pt.spent
+        }) ?? 0;
       },
       error: err => {
         console.log(err);

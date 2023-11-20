@@ -42,7 +42,12 @@
 
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
-        <mat-cell *matCellDef="let expense"> <button mat-icon-button><mat-icon color="warn">delete</mat-icon></button>
+        <mat-cell *matCellDef="let expense">
+          <button mat-icon-button [disabled]="expense.status=='APPROVED' ||  expense.status=='REJECTED'"
+            [ngClass]="{'disabled': expense.status=='APPROVED' ||  expense.status=='REJECTED', 'text-danger': expense.status=='PENDING'}"
+            (click)="deleteExpense(expense.id)">
+            <i class="bi bi-trash-fill"></i>
+          </button>
         </mat-cell>
       </ng-container>
 

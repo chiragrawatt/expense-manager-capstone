@@ -1,3 +1,4 @@
+import { IEventParticipant } from "./EventParticipant"
 import { IUser } from "./User"
 
 export interface IEvent {
@@ -5,10 +6,10 @@ export interface IEvent {
     title: string,
     description: string,
     totalBudget: number,
-    remainingBudget: number,
     startDate: string,
     endDate: string,
-    isActive: boolean
+    isActive: boolean,
+    isIndividual: boolean
     creator: IUser,
-    participants: IUser[]
+    participants: IEventParticipant[]
 }

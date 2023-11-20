@@ -1,6 +1,6 @@
 import { IEvent } from "./Event";
 import { IExpenseCategory } from "./ExpenseCategory";
-import { EExpenseStatus } from "./ExpenseStatus";
+import { EExpenseStatus } from "../enums/ExpenseStatus";
 import { IUser } from "./User";
 
 export interface IExpense { 

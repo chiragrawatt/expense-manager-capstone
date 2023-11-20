@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, Form, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IEvent } from 'src/shared/models/interfaces/Event';
 import { IExpense } from 'src/shared/models/interfaces/Expense';
 import { IExpenseCategory } from 'src/shared/models/interfaces/ExpenseCategory';
-import { EExpenseStatus } from 'src/shared/models/interfaces/ExpenseStatus';
+import { EExpenseStatus } from 'src/shared/models/enums/ExpenseStatus';
 import { CategoryService } from 'src/shared/services/category.service';
 import { EventService } from 'src/shared/services/event.service';
 import { ExpenseService } from 'src/shared/services/expense.service';
+import { UserService } from 'src/shared/services/user.service';
+import { ENotificationType } from 'src/shared/models/enums/NotificationType';
+import { INotification } from 'src/shared/models/interfaces/Notification';
+import { AuthService } from 'src/shared/services/auth.service';
 
 @Component({
   selector: 'app-add-expense',
@@ -21,7 +26,7 @@ export class AddExpenseComponent implements OnInit {
 
   imgSrc : any = "";
 
-  constructor(private fb: FormBuilder, private expenseService: ExpenseService, private eventService: EventService, private categoryService: CategoryService) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private expenseService: ExpenseService, private eventService: EventService, private categoryService: CategoryService, private router: Router, private userService: UserService) { }
 
   onSubmit(): void {
     let formData : IExpense = this.expenseForm.getRawValue();
@@ -29,12 +34,31 @@ export class AddExpenseComponent implements OnInit {
     formData.receipt = this.imgSrc;
     formData.status = EExpenseStatus.PENDING;
 
-    console.log("img", this.imgSrc);
-    console.log("rec", formData.receipt);
+    console.log(formData);
 
     this.expenseService.addExpense(formData).subscribe({
       next: res => {
         console.log(res);
+
+        let notification : INotification = {
+          navLink: "/dashboard/expenses/pending",
+          isVisited: false,
+          type: ENotificationType.NEUTRAL,
+          message: `You have an expense request from ${this.authService.currentUser?.username} for event ${formData.event.title}` 
+        }
+
+        console.log(notification);
+        
+        this.userService.notifyUser(notification, formData.event.creator.id).subscribe({
+          next: res => {
+            console.log(res);
+            this.router.navigateByUrl('/dashboard/expenses/view')
+          },
+          error: err => {
+            console.log(err);
+          }
+        })
+
       },
       error: err => {
         console.log(err);
@@ -58,7 +82,7 @@ export class AddExpenseComponent implements OnInit {
 
     this.eventService.participatedEvents.subscribe({
       next: res => {
-        this.events = res;
+        this.events = res.filter(event => event.isActive == true);
         console.log(res);
       },  
       error: err => {

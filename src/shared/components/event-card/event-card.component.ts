@@ -14,7 +14,7 @@ export class EventCardComponent implements OnInit{
   }
   
   ngOnInit(): void {
-    this.participants = this.event.participants.map(user => user.username).join(", ");
+    this.participants = this.event.participants.map(participant => participant.user.username).join(", ");
   }
 
 }

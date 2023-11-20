@@ -7,6 +7,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { ReceiptPopupComponent } from './components/receipt-popup/receipt-popup.component';
 import { LogoutPopupComponent } from './components/logout-popup/logout-popup.component';
+import { RejectExpensePopupComponent } from './components/reject-expense-popup/reject-expense-popup.component';
+import { NotificationsDialogComponent } from './components/notifications-dialog/notifications-dialog.component';
 
 
 
@@ -15,7 +17,9 @@ import { LogoutPopupComponent } from './components/logout-popup/logout-popup.com
     LoaderComponent,
     EventCardComponent,
     ReceiptPopupComponent,
-    LogoutPopupComponent
+    LogoutPopupComponent,
+    RejectExpensePopupComponent,
+    NotificationsDialogComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +30,8 @@ import { LogoutPopupComponent } from './components/logout-popup/logout-popup.com
     LoaderComponent,
     EventCardComponent,
     ReceiptPopupComponent,
-    LogoutPopupComponent
+    LogoutPopupComponent,
+    NotificationsDialogComponent
   ]
 })
 export class SharedModule { }

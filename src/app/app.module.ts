@@ -25,6 +25,7 @@ import { ViewExpenseComponent } from './dashboard/expenses/view-expense/view-exp
 import { PendingExpensesComponent } from './dashboard/expenses/pending-expenses/pending-expenses.component';
 import { ExpensePageComponent } from './dashboard/expenses/expense-page/expense-page.component';
 import { ExpenseRequestsComponent } from './dashboard/expenses/expense-requests/expense-requests.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ExpenseRequestsComponent } from './dashboard/expenses/expense-requests/
     ViewExpenseComponent,
     PendingExpensesComponent,
     ExpensePageComponent,
-    ExpenseRequestsComponent
+    ExpenseRequestsComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,

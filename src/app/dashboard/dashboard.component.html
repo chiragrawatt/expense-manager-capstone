@@ -4,14 +4,13 @@
     </button>
     <span>Expense Manager</span>
     <div class="ms-auto d-flex">
-        <button mat-icon-button>
-            <mat-icon> message</mat-icon>
-
+        <button  *ngIf="notifications.length>0" mat-icon-button (click)="openNotificationsDialog()">
+            <mat-icon   [matBadge]="notifications.length" matBadgeColor="accent">notifications_none</mat-icon>
         </button>
-        <button mat-icon-button>
-            <mat-icon matBadge="7" matBadgeColor="accent">notifications_none</mat-icon>
+        <button *ngIf="notifications.length==0" mat-icon-button (click)="openNotificationsDialog()">
+            <mat-icon matBadgeColor="accent">notifications_none</mat-icon>
         </button>
-        <button mat-icon-button (click)="openDialog()">
+        <button mat-icon-button (click)="openLougOutDialog()">
             <mat-icon>power_settings_new</mat-icon>
         </button>
     </div>

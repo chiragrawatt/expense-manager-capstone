@@ -13,6 +13,7 @@ import { AddExpenseComponent } from './dashboard/expenses/add-expense/add-expens
 import { ViewExpenseComponent } from './dashboard/expenses/view-expense/view-expense.component';
 import { ExpenseRequestsComponent } from './dashboard/expenses/expense-requests/expense-requests.component';
 import { PendingExpensesComponent } from './dashboard/expenses/pending-expenses/pending-expenses.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 const routes: Routes = [
   {path: "signin", component: SigninComponent},
@@ -29,9 +30,10 @@ const routes: Routes = [
       {path: "add", component: AddExpenseComponent},
       {path: "requests", component: ExpenseRequestsComponent},
       {path: "pending", component: PendingExpensesComponent},
-      {path: "", redirectTo: "view", pathMatch: "full"}
+      {path: "", redirectTo: "pending", pathMatch: "full"}
     ]},
     {path: "team", component: TeamComponent},
+    {path: "user/add", component: AddUserComponent},
     {path: "", redirectTo: "expenses", pathMatch: "full"}
   ]},
   {path: "", redirectTo: "signin", pathMatch: "full"}

@@ -30,16 +30,16 @@
         <mat-divider></mat-divider>
         <div>
             <span class="fw-semibold">Remaining Budget: </span>
-            <span>₹{{event?.remainingBudget}}</span>
+            <span>₹{{totalRemainingBudget}}</span>
         </div>
         <mat-divider></mat-divider>
         <div>
             <span class="fw-semibold">Participants: </span>
-            <div class="navs d-flex btn gap-2 user-holder" *ngFor="let user of event?.participants">
+            <div class="navs d-flex btn gap-2 user-holder" *ngFor="let participant of event?.participants">
                 <div class="d-flex navs bg-secondary rounded rounded-pill photo-bg justify-content-center align-items-center">
-                    <span class="text-primary">{{getInitials(user.username)}}</span>
+                    <span class="text-primary">{{getInitials(participant.user.username)}}</span>
                 </div>
-                <span>{{user.username}}</span>
+                <span>{{participant.user.username}}</span>
             </div>
         </div>
         <mat-divider></mat-divider>

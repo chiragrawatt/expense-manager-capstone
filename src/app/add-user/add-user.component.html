@@ -1,0 +1,29 @@
+<section>
+    <mat-card class="d-flex justify-content-center p-5">
+        <span class="fs-2 fw-semibold">Add User</span>
+        <div>
+          <form class="d-flex flex-column align-items-start w-50" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <label>Name:</label>
+            <input class="form-control" type="text" formControlName="username">
+
+            <label>Email:</label>
+            <input class="form-control" type="text" formControlName="email">
+
+            <label>Password:</label>
+            <input class="form-control" type="text" formControlName="password">
+
+            <label for="team">Team:</label>
+            <select id="team" class="form-select" name="team" formControlName="team">
+              <option *ngFor="let team of teams" [ngValue]="team">{{team.name}}</option>
+            </select>
+
+            <label for="role">Role:</label>
+            <select id="role" class="form-select" name="role" formControlName="role">
+              <option *ngFor="let role of roles" [ngValue]="role">{{role.name}}</option>
+            </select>
+          
+            <button [disabled]="!userForm.valid" class="btn btn-primary w-100 p-2" type="submit">ADD</button>
+          </form>
+        </div>
+    </mat-card>
+</section>

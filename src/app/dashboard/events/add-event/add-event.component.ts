@@ -16,6 +16,7 @@ export class AddEventComponent implements OnInit {
   users : IUser[] = [];
   currentUser : IUser | null = null;
   selectedParticipants: string[] = [];
+  isIndividual : boolean = false;
   
   searchQuery!: FormControl;
   eventForm : FormGroup = this.fb.group({});
@@ -54,10 +55,11 @@ export class AddEventComponent implements OnInit {
 
     this.eventForm = this.fb.group({
       title: ['', [Validators.required]],
-      budget: [null , [Validators.required]],
+      totalBudget: [null , [Validators.required]],
       startDate: ['', [Validators.required]],
       endDate: ['', [Validators.required]],
-      description: ['']
+      description: [''],
+
     })
   }
 
@@ -96,12 +98,25 @@ export class AddEventComponent implements OnInit {
   onSubmit() {
     let eventData : IEvent = this.eventForm.getRawValue();
 
+    console.log(eventData);
+
     if(this.currentUser!=null) {
       eventData.creator = this.currentUser;
     }
+    
+    let selectedUsers : IUser[] =  this.users.filter(user => this.selectedParticipants.includes(user.id));
 
-    eventData.participants = this.users.filter(user => this.selectedParticipants.includes(user.id));
+
+    eventData.participants = selectedUsers.map(user => {
+      return {
+        user,
+        budget: eventData.totalBudget/selectedUsers.length,
+        spent: 0
+      }
+    })
     eventData.isActive = true;
+
+    console.log(eventData);
 
     this.eventService.addEvent(eventData).subscribe({
       next: res => {
