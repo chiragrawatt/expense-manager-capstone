@@ -5,6 +5,7 @@ import { API_URL } from '../constants/api.constants';
 import { ILoginRequest } from '../models/interfaces/payloads/LoginRequest';
 import { IUser } from '../models/interfaces/User';
 import { ILoginResponse } from '../models/interfaces/payloads/LoginResponse';
+import { INotification } from '../models/interfaces/Notification';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,10 @@ export class AuthService {
     return this.http.post<ILoginResponse>(`${API_URL}/auth/signin`, signInRequest);
   }
 
+  addUser(user: IUser) : Observable<IUser> {
+    return this.http.post<IUser>(`${API_URL}/auth/signup`, user);
+  }
+
   signOut() : void {
     this.currentUser = null
     this.isLoggedIn = false;
@@ -49,5 +54,13 @@ export class AuthService {
 
   getTokenFromLocalStorage() : string {
     return localStorage.getItem("token") ?? '';
+  }
+
+  isManager() : boolean {
+    return this.currentUser?.roles.some(role => role.name=='ROLE_MANAGER') ?? false;
+  }
+
+  isAdmin() : boolean {
+    return this.currentUser?.roles.some(role => role.name=='ROLE_ADMIN') ?? false;
   }
 }

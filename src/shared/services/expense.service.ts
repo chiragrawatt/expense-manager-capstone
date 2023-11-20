@@ -3,7 +3,7 @@ import { IExpense } from '../models/interfaces/Expense';
 import { API_URL } from '../constants/api.constants';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { EExpenseStatus } from '../models/interfaces/ExpenseStatus';
+import { EExpenseStatus } from '../models/enums/ExpenseStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -59,5 +59,9 @@ export class ExpenseService {
 
   addExpense(expense: IExpense) : Observable<IExpense> {
     return this.http.post<IExpense>(`${API_URL}/expense`, expense);
+  }
+
+  deleteExpense(expenseId: string) {
+    return this.http.delete<number>(`${API_URL}/expense/${expenseId}`)
   }
 }

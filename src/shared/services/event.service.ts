@@ -54,4 +54,8 @@ export class EventService {
   addEvent(event: IEvent) : Observable<IEvent> {
     return this.http.post<IEvent>(`${API_URL}/event`, event);
   }
+
+  addEvents(events: IEvent[]) : Observable<number> {
+    return this.http.post<number>(`${API_URL}/event`, events);
+  }
 }
